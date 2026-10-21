@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* ============ База ============ */
+* {
+    margin: 0;
+    padding: 9px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+
+    background-image: url('../img/fon1.webp');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    padding: 50px 0;
+    /* небольшой отступ сверху и снизу */
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    /* картинки не вылезают за контейнер */
+    height: auto;
+    display: block;
+}
+
+/* ============ Обёртка с градиентом ============ */
+.wrapee {
+    background: linear-gradient(90deg,
+            rgba(4, 28, 41, 0.85) 0%,
+            rgba(12, 45, 48, 0.85) 56%,
+            rgba(5, 91, 97, 0.85) 100%);
+
+    /* ПРЯМОУГОЛЬНИК: ограничиваем ширину и центрируем */
+    width: 90%;
+    /* было 100% — теперь по бокам поля */
+    max-width: 1400px;
+    /* на больших экранах не растягивается */
+    margin: 30px auto;
+    /* 30px сверху/снизу + центрирование по горизонтали */
+
+    border-radius: 15px;
+    /* скруглённые углы — красивее */
+    overflow: hidden;
+    /* чтобы дети не вылезали за радиус */
+
+}
+
+.container {
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+    /* чтобы на узких экранах не прилипало */
+}
+
+
+
+/* ============ Шапка ============ */
+header {
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo {
+    text-transform: uppercase;
+    font-size: 29px;
+    font-weight: 800;
+    /* БЫЛО 800px — ошибка */
+    color: #ffffff;
+}
+
+header nav {
+    padding: 10px 20px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+header nav ul li a {
+    color: bisque;
+    transition: color 300ms ease;
+}
+
+/* Ховер по обычным ссылкам */
+header nav ul li:not(.active):not(.btn) a:hover {
+    border-bottom: 5px solid #DC7000;
+}
+
+/* Активный пункт (Главная) */
+header nav ul li.active::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 5px;
+    background: #DC7000;
+    border-radius: 10px;
+    position: relative;
+    top: 8px;
+    left: -15px;
+}
+
+/* Кнопка "Контакты" (если добавите) */
+header nav ul li.btn a {
+    background: #DC7000;
+    padding: 9px 17px;
+    border-radius: 5px;
+    transition: background 500ms ease;
+}
+
+header nav ul li.btn a:hover {
+    background: #6d0606;
+}
+
+/* ============ Hero-секция ============ */
+.hero {
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.hero--info {
+    width: 530px;
+    max-width: 100%;
+    padding-top: 70px;
+}
+
+.hero--info h2 {
+    color: #DC7000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero--info h1 {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero--info p {
+    font-weight: 500;
+    line-height: 170%;
+    margin: 30px 0;
+}
+
+/* Кнопка */
+.hero--info .btn {
+    background: #DC7000;
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 15px 30px;
+    border: 0;
+    font-size: 17px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 500ms ease;
+    /* БЫЛО transform — ошибка */
+}
+
+.hero--info .btn:hover {
+    transform: scale(1.1);
+    background: #b85f00;
+}
+
+/* Картинка героя */
+.hero>img {
+    width: 45%;
+    max-width: 420px;
+    height: auto;
+    margin-top: 70px;
+}
+
+/* ============ Роли / Лайны ============ */
+.trending {
+    padding-top: 50px;
+}
+
+.trending h3 {
+    font-weight: 600;
+    font-size: 31px;
+    margin-bottom: 10px;
+}
+
+.trending .games {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 50px 0;
+    gap: 20px;
+}
+
+.trending .games .block {
+    width: calc(20% - 16px);
+    text-align: center;
+}
+
+.trending .games .block>img {
+    margin: 0 auto 10px;
+    max-width: 150px;
+    width: 100%;
+    /* чтобы картинка занимала всю доступную ширину блока */
+    height: auto;
+}
+
+.trending .games span {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 100;
+}
+
+.trending .games span img {
+    width: 20px;
+    height: 20px;
+    max-width: none;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+    margin: 0 6px 0 0;
+    padding: 0;
+    /* перебивает глобальный padding: 9px */
+    object-fit: contain;
+    /* не искажает пропорции */
+}
+
+/* ============ Большой текст ============ */
+.big-text {
+    padding: 50px 0;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    /* БЫЛО width: 800 — ошибка */
+    margin: 0 auto;
+    color: #e48d30;
+}
+
+.big-text p {
+    margin-bottom: 20px;
+}
+
+
+
+.tasks {
+    text-align: left;
+    max-width: 900px;
+    /* было 800px */
+    margin: 20px auto;
+    line-height: 1.7;
+}
+
+/* ============ Блок Features (с фоном) ============ */
+
+
+.features {
+    background: url('/img/FON1.webp') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.features h3,
+.features p {
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features h3 {
+    font-size: 30px;
+    color: #e48d30;
+}
+
+.features p {
+    font-size: 20px;
+    color: #e48d30;
+}
+
+.features .info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.features .info .block {
+    width: 20%;
+    min-width: 140px;
+    text-align: center;
+    margin: 30px 2%;
+    cursor: pointer;
+    transition: transform 300ms ease;
+}
+
+.features .info .block:hover {
+    transform: translateY(-5px);
+}
+
+.features .info .block img {
+    margin: 0 auto 10px;
+    max-width: 140px;
+    height: auto;
+}
+
+.features .info .block p {
+    font-size: 18px;
+    color: #e48d30;
+    font-weight: 500;
+}
+
+.features .info .block .strel {
+    margin-top: 10px;
+}
+
+.features .info .block .strel img {
+    width: 50%;
+    max-width: 60px;
+    margin: 0 auto;
+}
+
+/* ============ Статистика (projects) ============ */
+.projects {
+    padding: 100px 0;
+}
+
+
+.projects hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    /* Тонкая линия сверху */
+    margin: 20px 0;
+
+
+}
+
+.projects h3 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.projects p {
+    margin: 20px 0 40px;
+    text-align: center;
+}
+
+.projects .images {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.projects .images img {
+    width: 280px;
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 300ms ease;
+}
+
+.projects .images img:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* Контейнер для заголовка + иконки */
+.role-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Центрируем заголовок с иконкой */
+    gap: 5px;
+    /* Отступ между текстом и иконкой */
+    margin-top: 10px;
+    /* Отступ сверху для красоты */
+    margin-bottom: 15px;
+}
+
+/* Сам текст заголовка */
+.role-header p {
+    margin: 0;
+    padding: 0;
+
+    /* Контейнер для заголовка + иконки */
+    .role-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Центрируем заголовок с иконкой */
+        gap: 10px;
+        /* Отступ между текстом и иконкой */
+        margin-top: 40px;
+        /* Отступ сверху для красоты */
+        margin-bottom: 15px;
+    }
+
+    /* Сам текст заголовка */
+    .role-header p {
+        margin: 0;
+        padding: 0;
+        white-space: nowrap;
+        /* Запрещаем тексту ломаться на две строки */
+    }
+
+    /* Иконка */
+    .role-header img {
+        width: 40px;
+        /* Размер иконки (подберите нужный) */
+        height: auto;
+        max-width: none;
+        padding: 0;
+        display: block;
+    }
+}
+
+/* Иконка */
+.role-header img {
+    width: 25px;
+    /* Размер иконки (подберите нужный) */
+    height: auto;
+    max-width: none;
+    padding: 0;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============ Футер ============ */
+footer {
+    /* Такой же градиент, как у .wrapee, с той же прозрачностью 0.85 */
+    background: linear-gradient(90deg,
+            rgba(4, 28, 41, 0.85) 0%,
+            rgba(12, 45, 48, 0.85) 56%,
+            rgba(5, 91, 97, 0.85) 100%);
+
+    /* Если нужно, чтобы сквозь футер была видна фоновая картинка (как у body), 
+       можно вообще убрать background или сделать его полупрозрачным. 
+       Но если футер внутри .wrapee — градиент наложится на градиент. 
+       Если футер снаружи — будет как отдельный блок с таким же стилем. */
+
+    padding: 50px 0;
+    color: #ffffff;
+    border-radius: 15px;
+    /* Скругление, как у .wrapee (если нужно) */
+    margin-top: 20px;
+    /* Отступ сверху, как у .wrapee (если нужно) */
+}
+
+footer .blocks {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+footer .blocks>div {
+    flex: 1 1 200px;
+}
+
+footer .blocks .logo {
+    text-transform: uppercase;
+    font-size: 29px;
+    font-weight: 800;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+footer .blocks p {
+    max-width: 300px;
+    margin: 15px 0;
+    opacity: 0.85;
+}
+
+footer .blocks h4 {
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+footer .blocks ul {
+    list-style: none;
+}
+
+footer .blocks ul li {
+    margin-top: 7px;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 200ms ease, color 200ms ease;
+}
+
+footer .blocks ul li:hover {
+    opacity: 1;
+    color: #05e7e3;
+}
+
+footer hr {
+    margin: 30px 0;
+    border: 0;
+    height: 1px;
+    background: #000000;
+    opacity: 0.5;
+}
+
+footer>p {
+    text-align: center;
+    opacity: 0.8;
+}
+
+
+
+/* ============ Адаптив ============ */
+@media (max-width: 900px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    header nav ul {
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 50px;
+    }
+
+    .hero--info {
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .hero>img {
+        margin: 30px auto 0;
+        width: 70%;
+    }
+
+    .trending .games .block {
+        width: calc(33.33% - 14px);
+    }
+
+    .features .info .block {
+        width: calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero--info h1 {
+        font-size: 32px;
+    }
+
+    .trending .games .block {
+        width: calc(50% - 10px);
+    }
+
+    .features .info .block {
+        width: calc(50% - 20px);
+    }
+
+    .big-text {
+        font-size: 20px;
+    }
+
+    footer .blocks {
+        flex-direction: column;
+    }
+}
